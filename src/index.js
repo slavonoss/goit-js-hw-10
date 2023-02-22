@@ -21,7 +21,6 @@ const onInputName = event => {
       })
       .catch(error => {
         Notify.failure('Oops, there is no country with that name');
-
         return;
       });
   } else {
