@@ -21,6 +21,7 @@ const onInputName = event => {
       })
       .catch(error => {
         Notify.failure('Oops, there is no country with that name');
+
         return;
       });
   } else {
@@ -31,16 +32,18 @@ const onInputName = event => {
 };
 
 const innerData = data => {
-  if (data.length == 1) {
+  if (data.length === 1) {
     listEL.innerHTML = '';
     data[0].languages = Object.values(data[0].languages).join(', ');
     infoEl.innerHTML = cardTemplate(data);
   } else {
+    listEL.innerHTML = '';
     infoEl.innerHTML = '';
     listEL.innerHTML = listTemplate(data);
   }
   if (data.length > 10) {
     listEL.innerHTML = '';
+    infoEl.innerHTML = '';
     Notify.info('Too many matches found. Please enter a more specific name.');
   }
 };
